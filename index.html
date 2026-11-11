@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#071421" />
+    <title>Naval Command — PvE Fleet Sandbox</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+      <header class="topbar">
+        <div class="brand-mark"><span class="brand-cross">✣</span></div>
+        <div class="brand-copy"><strong>NAVAL COMMAND</strong><small>FLEET OPERATIONS / PVE SANDBOX</small></div>
+        <div class="topbar-right"><span class="live-dot"></span><span id="weather-label">SEA STATE 2</span></div>
+      </header>
+      <section class="mission-strip">
+        <div><span class="eyebrow">OPERATION</span><strong>GREY HORIZON</strong></div>
+        <div class="mission-objective"><span class="eyebrow">OBJECTIVE</span><strong>Engage hostile vessels</strong></div>
+        <div class="mission-count"><span class="eyebrow">HOSTILES</span><strong id="enemy-count">02</strong></div>
+      </section>
+      <aside class="left-panel panel">
+        <div class="panel-heading"><span>FLEET STATUS</span><span class="panel-code">F-01</span></div>
+        <div id="fleet-list" class="fleet-list"></div>
+        <div class="panel-divider"></div>
+        <div class="panel-heading"><span>FORMATION</span><span class="panel-code">ORDERS</span></div>
+        <div class="formation-grid">
+          <button data-formation="lineAhead" class="command-button active">LINE<br />AHEAD</button>
+          <button data-formation="echelon" class="command-button">ECHELON</button>
+          <button data-formation="broadsideLine" class="command-button">BROAD-<br />SIDE</button>
+        </div>
+        <label class="range-label" for="spacing-range"><span>FORMATION SPACING</span><output id="spacing-value">45 m</output></label>
+        <input id="spacing-range" type="range" min="25" max="100" value="45" />
+      </aside>
+      <aside class="right-panel panel">
+        <div class="panel-heading"><span>ENVIRONMENT</span><span class="panel-code">WX / LIVE</span></div>
+        <div class="weather-readout"><div><span class="eyebrow">WIND</span><strong id="wind-value">18 kn</strong></div><div><span class="eyebrow">VISIBILITY</span><strong id="visibility-value">8.0 km</strong></div></div>
+        <label class="range-label" for="storm-range"><span>STORM INTENSITY</span><output id="storm-value">0.25</output></label>
+        <input id="storm-range" type="range" min="0" max="100" value="25" />
+        <label class="range-label" for="sea-range"><span>SWELL / SEA STATE</span><output id="sea-value">0.25</output></label>
+        <input id="sea-range" type="range" min="0" max="100" value="25" />
+        <div class="panel-divider"></div>
+        <div class="panel-heading"><span>SELECTED VESSEL</span><span class="panel-code" id="selected-class">DDG</span></div>
+        <div class="selected-name" id="selected-name">Aegis / F-01</div>
+        <div class="ship-metrics"><div><span class="eyebrow">SPEED</span><strong id="speed-value">0.0 kn</strong></div><div><span class="eyebrow">HULL</span><strong id="hull-value">100%</strong></div></div>
+        <div class="meter"><span id="hull-meter" style="width:100%"></span></div>
+        <div class="ship-metrics flood-row"><div><span class="eyebrow">FLOODING</span><strong id="flood-value">0%</strong></div><div><span class="eyebrow">CAPSIZE</span><strong id="heel-value">0°</strong></div></div>
+      </aside>
+      <footer class="bottom-hud">
+        <div class="helm-group"><span class="eyebrow">HELM / THROTTLE</span><div class="helm-keys"><kbd>A</kbd><kbd>W</kbd><kbd>S</kbd><kbd>D</kbd><span>RUDDER / ENGINE · F / SPACE GUNS · G TORPEDO</span></div></div>
+        <div class="orders-hint"><span class="mouse-icon">⌖</span><span>CLICK WATER TO SET WAYPOINT</span></div>
+        <div class="system-hint"><span class="eyebrow">SWITCH SHIP</span><kbd>TAB</kbd><span class="hint-sep"></span><span class="eyebrow">FORMATION</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></div>
+      </footer>
+      <div class="crosshair"><span></span><i></i></div>
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
